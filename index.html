@@ -1,24 +1,24 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>   
+    
+    <title>Top Internet Countries Visualization</title>
+  </head>
+  <body>
+    <button onclick="update('Points')" id="btn1">Points</button>
+    <button onclick="update('Rebounds')" id="btn2">Rebounds</button>
+    <button onclick="update('Assists')" id ="btn3">Assists</button>
+    <button onclick="update('Steals')" id ="btn4">Steals</button>
+    <button onclick="update('Blocks')"id="btn5">Blocks</button>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Denver Nuggets 2018-2019</title>
-    <!-- <link rel="stylesheet" -->
-    <!-- href="style.css"> -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
-</head>
-
-<body>
-    <div class="container text-center">
-        <h1 class="jumbotron">Denver Nuggets 2018-2019 Deep Dive 
-            <div class="text-center"></div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNNe4gUb2l4FR4_TapdYk7eG9D8CcfEgybOphegJrQJHHRuhRbiw">
-        </h1>
-    </div>
-    <script src="app.js"></script>
-</body>
-
+    <div id="my_dataviz"></div>
+    <!-- <svg width="960" height="500"></svg> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    </body>
 </html>
