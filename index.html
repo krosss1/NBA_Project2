@@ -17,14 +17,19 @@
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNNe4gUb2l4FR4_TapdYk7eG9D8CcfEgybOphegJrQJHHRuhRbiw" class="mx-auto d-block">
           </h1>
       </div>
-    <button onclick="update('Points')" id="btn1">Points</button>
-    <button onclick="update('Rebounds')" id="btn2">Rebounds</button>
-    <button onclick="update('Assists')" id ="btn3">Assists</button>
-    <button onclick="update('Steals')" id ="btn4">Steals</button>
-    <button onclick="update('Blocks')"id="btn5">Blocks</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" onclick="update('Points')" id="btn1">Points</button>
+        <button type="button" class="btn btn-primary" onclick="update('Rebounds')" id="btn2">Rebounds</button>
+        <button type="button" class="btn btn-primary" onclick="update('Assists')" id ="btn3">Assists</button>
+        <button type="button" class="btn btn-primary" onclick="update('Steals')" id ="btn4">Steals</button>
+        <button type="button" class="btn btn-primary" onclick="update('Blocks')"id="btn5">Blocks</button>
+      </div>
+      <div class="container">
+        <h3>Player Level Statistics</h3>
+      </div>
 
     <div id="my_dataviz"></div>
-    <svg width="960" height="500"></svg>
+    <!-- <svg width="960" height="500"></svg> -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     </body>
