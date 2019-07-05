@@ -11,18 +11,6 @@ d3.csv("per_game_stats.csv", function(error, data) {
 data.sort(function(b, a) {
   return a.Points - b.Points;
 });
-     // create a tooltip
-  var Tooltip = d3.select("#my_dataviz")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "3px")
-    .style("padding", "3px")
-
- 
 
 d3.select('#btn1').on('click', function() {
   d3.select ('#my_dataviz').html("")
@@ -34,28 +22,32 @@ d3.select('#btn1').on('click', function() {
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
  
-  var Tooltip = d3.select("#my_dataviz")
-  .append("div")
-  .style("opacity", 0)
-  .attr("class", "tooltip")
-  .style("background-color", "white")
-  .style("border", "solid")
-  .style("border-width", "1px")
-  .style("border-radius", "3px")
-  .style("padding", "3px")
- 
+  var Tooltip = d3.select("#my_dataviz").append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "gold")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "3px")
+    .style("padding", "3px")
+
   console.log('hello')
-   // Three function that change the tooltip when user hover / move / leave a cell
-   var x = d3.scaleLinear()
-    .domain([0, 22])
-    .range([ 0, width]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-      .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end")
-      .style("font-size", "15px");
+  // X-Axis
+  var x = d3.scaleLinear()
+  .domain([0, 22])
+  .range([ 0, width]);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end")
+    .style("font-size", "15px");
+svg.append("text")
+  .attr("class", "x label")
+  .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+  .attr("text-anchor", "middle")
+  .text("Points Per Game");
 
 // Y axis
 var y = d3.scaleBand()
@@ -64,7 +56,9 @@ var y = d3.scaleBand()
   .padding(1);
 svg.append("g")
   .call(d3.axisLeft(y))
-  .style("font-size", "12px")
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-25)")
+    .style("font-size", "12px")
 
 
 // Lines
@@ -77,7 +71,7 @@ svg.selectAll("myline")
     .attr("y1", function(d) { return y(d.Name); })
     .attr("y2", function(d) { return y(d.Name); })
     .attr("stroke", "royalblue")
-   
+   // Three function that change the tooltip when user hover / move / leave a cell 
    var mouseover = function(d) {
     Tooltip
       .style("opacity", 1)
@@ -88,10 +82,9 @@ svg.selectAll("myline")
       .attr('r',12)
   }
   var mousemove = function(d) {
-    Tooltip
-       .html(d.Points + ' per Game')
-      .style("right", (d3.event.pageY + 10) + "px")
-      .style("top", (d3.event.pageX + 10) + "px")
+    Tooltip.html(d.Points + ' per Game')
+      .style("right", (d3.event.pageY -34) + "px")
+      .style("top", (d3.event.pageX -12) + "px");
   }
   var mouseleave = function(d) {
     Tooltip 
@@ -121,11 +114,6 @@ svg.selectAll("mycircle")
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
 
-
-
-
-
-
   svg.selectAll("circle")
   .transition()
   .duration(2000)
@@ -154,13 +142,15 @@ d3.select('#btn2').on('click', function() {
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
-    .style("background-color", "white")
+    .style("background-color", "gold")
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "3px")
     .style("padding", "3px") 
  
   console.log('hello')
+
+  //x axis
   var x = d3.scaleLinear()
   .domain([0, 12])
   .range([ 0, width]);
@@ -171,6 +161,11 @@ svg.append("g")
     .attr("transform", "translate(-10,0)rotate(-45)")
     .style("text-anchor", "end")
     .style("font-size", "15px");
+  svg.append("text")
+  .attr("class", "x label")
+  .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+  .attr("text-anchor", "middle")
+  .text("Rebounds Per Game");
 
 // Y axis
 var y = d3.scaleBand()
@@ -179,6 +174,8 @@ var y = d3.scaleBand()
 .padding(1);
 svg.append("g")
 .call(d3.axisLeft(y))
+.selectAll("text")
+.attr("transform", "translate(-10,0)rotate(-25)")
 .style("font-size", "12px")
 
 
@@ -263,13 +260,13 @@ d3.select('#btn3').on('click', function() {
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip")
-  .style("background-color", "white")
+  .style("background-color", "gold")
   .style("border", "solid")
   .style("border-width", "1px")
   .style("border-radius", "3px")
   .style("padding", "3px")
 
-
+//X Axis
   var x = d3.scaleLinear()
   .domain([0, 8])
   .range([ 0, width]);
@@ -280,6 +277,11 @@ svg.append("g")
     .attr("transform", "translate(-10,0)rotate(-45)")
     .style("text-anchor", "end")
     .style("font-size", "15px");
+  svg.append("text")
+  .attr("class", "x label")
+  .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+  .attr("text-anchor", "middle")
+  .text("Assists Per Game");
 
 // Y axis
 var y = d3.scaleBand()
@@ -288,6 +290,8 @@ var y = d3.scaleBand()
 .padding(1);
 svg.append("g")
 .call(d3.axisLeft(y))
+.selectAll("text")
+.attr("transform", "translate(-10,0)rotate(-25)")
 .style("font-size", "12px")
 
 
@@ -373,13 +377,15 @@ d3.select('#btn4').on('click', function() {
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip")
-  .style("background-color", "white")
+  .style("background-color", "gold")
   .style("border", "solid")
   .style("border-width", "1px")
   .style("border-radius", "3px")
   .style("padding", "3px")
  
   console.log('hello')
+
+ // X Axis 
   var x = d3.scaleLinear()
   .domain([0, 2])
   .range([ 0, width]);
@@ -390,6 +396,11 @@ svg.append("g")
     .attr("transform", "translate(-10,0)rotate(-45)")
     .style("text-anchor", "end")
     .style("font-size", "15px");
+  svg.append("text")
+  .attr("class", "x label")
+  .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+  .attr("text-anchor", "middle")
+  .text("Steals Per Game");
 
 // Y axis
 var y = d3.scaleBand()
@@ -398,8 +409,9 @@ var y = d3.scaleBand()
 .padding(1);
 svg.append("g")
 .call(d3.axisLeft(y))
+.selectAll("text")
+.attr("transform", "translate(-10,0)rotate(-25)")
 .style("font-size", "12px")
-
 
 // Lines
 svg.selectAll("myline")
@@ -484,13 +496,15 @@ d3.select('#btn5').on('click', function() {
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip")
-  .style("background-color", "white")
+  .style("background-color", "gold")
   .style("border", "solid")
   .style("border-width", "1px")
   .style("border-radius", "3px")
   .style("padding", "3px")
 
   console.log('hello')
+
+// X Axis
   var x = d3.scaleLinear()
   .domain([0, 1])
   .range([ 0, width]);
@@ -501,6 +515,11 @@ svg.append("g")
     .attr("transform", "translate(-10,0)rotate(-45)")
     .style("text-anchor", "end")
     .style("font-size", "15px");
+  svg.append("text")
+  .attr("class", "x label")
+  .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+  .attr("text-anchor", "middle")
+  .text("Blocks Per Game");
 
 // Y axis
 var y = d3.scaleBand()
@@ -509,6 +528,8 @@ var y = d3.scaleBand()
 .padding(1);
 svg.append("g")
 .call(d3.axisLeft(y))
+.selectAll("text")
+.attr("transform", "translate(-10,0)rotate(-25)")
 .style("font-size", "12px")
 
 
