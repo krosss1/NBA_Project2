@@ -12,4 +12,4 @@ Utilizing a bar chart, we have created visuals to show for each game of the year
 
 
 Visualization #3 - Shot Chart for each Player
-Utilizing R 
+Utilizing R & Shiny to create a visually pleasing app to see the shot charts of every Nugget player.
