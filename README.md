@@ -11,4 +11,5 @@ Visualization #2 - Margin of Victory (or loss)
 Utilizing a bar chart, we have created visuals to show for each game of the year, how much the Nuggets either won or loss by.
 
 
-Visualization 
+Visualization #3 - Shot Chart for each Player
+Utilizing R 
